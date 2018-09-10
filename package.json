@@ -1,0 +1,21 @@
+{
+  "name": "socratic-network",
+  "version": "0.2.7",
+  "description": "Social argument refinement",
+  "main": "index.js",
+  "engines": {
+    "node": "10.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "hcm",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mime": "^2.3.1",
+    "socket.io": "^2.1.1",
+    "tracer": "^0.9.1"
+  }
+}
