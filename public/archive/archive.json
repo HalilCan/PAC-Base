@@ -1,18 +1,1 @@
-{
-  "posts": [
-    {
-      "date": "09/08/2018",
-      "subjects": [
-        "FAQ"
-      ],
-      "title": "Knowledge Base FAQ",
-      "subtitle": "Feel free to update and expand this.",
-      "author": "Halil Can M",
-      "body": "1. What is this for?\n  This knowledge base is for all of us to be a better team and move forward faster. What that means is that we will share our useful knowledge, task-related experiences, and updates here in order to be aware of what the team is doing, where it is heading, and what problems need solving.\n\n2. What are the Paths?\n  The Paths are series of learning materials and exercises that will help members get to their desired level of ability faster.\n\n3. What are the weekly updates?\n  Each sub-team will use the update template to write up a short post of their weekly progress, their plans, and ideas. It is the same template the Software uses on Git, which makes it very short,  so no worries.\n\n4. Who posts the weekly updates? \n  It is in your sub-team's best interest to do it on a rotating schedule. That will make sure that none of your team members will be left clueless.\n\n5. Why does this not have better animations / functionality / meme support?\n  PAC-Base is built on Socratic, a custom CMS that is currently being developed. If you want to make that happen faster, you are welcome to follow one of the relevant Paths and/or talk to Halil Can.",
-      "labels": [
-        "faq",
-        "knowledge-base"
-      ]
-    }
-  ]
-}
+{"posts":[{"date":"09/08/2018","subjects":["FAQ"],"title":"Knowledge Base FAQ","subtitle":"Feel free to update and expand this.","author":"Halil Can M","body":"1. What is this for?\n  This knowledge base is for all of us to be a better team and move forward faster. What that means is that we will share our useful knowledge, task-related experiences, and updates here in order to be aware of what the team is doing, where it is heading, and what problems need solving.\n\n2. What are the Paths?\n  The Paths are series of learning materials and exercises that will help members get to their desired level of ability faster.\n\n3. What are the weekly updates?\n  Each sub-team will use the update template to write up a short post of their weekly progress, their plans, and ideas. It is the same template the Software uses on Git, which makes it very short,  so no worries.\n\n4. Who posts the weekly updates? \n  It is in your sub-team's best interest to do it on a rotating schedule. That will make sure that none of your team members will be left clueless.\n\n5. Why does this not have better animations / functionality / meme support?\n  PAC-Base is built on Socratic, a custom CMS that is currently being developed. If you want to make that happen faster, you are welcome to follow one of the relevant Paths and/or talk to Halil Can.","labels":["faq","knowledge-base"]},{"index":1,"date":"09/16/2018","subjects":["Guides"],"title":"Weekly Update Template","subtitle":"A guide and template for weekly progress updates","author":"Halil Can M","body":"Every team needs to submit a weekly update on PAC-B. This is because posting the updates require you to be aware of what your team is doing, allow you to know what the other teams are up to, and helps you plan together effectively.\n\nHere's the template:\n///\nWeek X\nDone: \nWhat you've done in the last week\nIn Progress:\nWhat you are doing currently and next week\nPlanned:\nWhat your plans are longer term\n///","labels":["weekly-update","guide"]},{"date":"09/16/2018","subjects":["Paths"],"title":"Software Path: Web Development","subtitle":"~The Tower","author":"Halil Can M","body":"This will get you where you need to be:\n///\nJavascript:\nEloquent Javascript\nhttp://eloquentjavascript.net/\n///\nFrontend + Projects\nhttps://www.freecodecamp.com/\n///\nNodeJS\nhttps://nodeschool.io/\n\n","labels":["paths.","software"],"index":2}]}
