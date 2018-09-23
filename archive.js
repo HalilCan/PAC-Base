@@ -35,18 +35,18 @@ let archiveSchema = new Schema(
 let ArchiveModel = mongoose.model('Post', archiveSchema);
 
 let addToDB = (post) => {
-  db.collection('socratic').insertOne(post, function (err, r) {
+  db.collection('pac-base').insertOne(post, function (err, r) {
     if (err) {
       return err;
     }
     console.log(`inserted count: ${r.insertedCount}`);
   });
-  //console.log(db.collection('socratic').find({}));
+  //console.log(db.collection('pac-base').find({}));
 };
 
 let editDB = (post, index) => {
   console.log(index);
-  db.collection('socratic').findOne({index: index}, function (err, foundPost) {
+  db.collection('pac-base').findOne({index: index}, function (err, foundPost) {
     foundPost.date = post.date;
     
     foundPost.subjects = post.subjects;
@@ -61,11 +61,11 @@ let editDB = (post, index) => {
     
     foundPost.labels = post.labels;
     
-    db.collection('socratic').save(foundPost);
+    db.collection('pac-base').save(foundPost);
     //TODO:DeprecationWarning: collection.save is deprecated. Use insertOne, insertMany, updateOne, or updateMany instead.
     //console.log(`inserted count: ${r.insertedCount}`);
   });
-  console.log(db.collection('socratic').find({index: index}));
+  console.log(db.collection('pac-base').find({index: index}));
 };
 ///
 
