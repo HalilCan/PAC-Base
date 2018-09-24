@@ -72,6 +72,7 @@ let editDB = (post, index) => {
 
 /* NOTE:
  If a given post object exists in the archive, it gets updated. Otherwise, a new post is added to the archive.
+ Heroku build testing
  */
 
 //TODO: edit/post behaviour will need to change with mgdb
