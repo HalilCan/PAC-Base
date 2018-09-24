@@ -5,6 +5,7 @@ const {stat} = require("fs").promises;
 
 
 // Setting up mongodb and mongoose
+//Atlas editing works boys!
 let mongoose = require('mongoose');
 let dbUri = "mongodb+srv://halilcan:testpwhcm1@hcm1-cmqfz.mongodb.net/pac-base?retryWrites=true";
 mongoose.connect(dbUri, {
