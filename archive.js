@@ -78,7 +78,7 @@ let syncDbUpward = (collection) => {
                 foundPost.author = post.author;
                 foundPost.body = post.body;
                 foundPost.labels = post.labels;
-                db.collection('socratic').save(foundPost);
+                db.collection('posts').save(foundPost);
                 //TODO:DeprecationWarning: collection.save is deprecated. Use insertOne, insertMany, updateOne, or updateMany instead.
             } else {
                 addToDB(post);
@@ -88,17 +88,17 @@ let syncDbUpward = (collection) => {
 };
 
 /* NOTE:
-    Given the connection to the database, inserts the ${post} to collection 'socratic'
+    Given the connection to the database, inserts the ${post} to collection 'posts'
     TODO: Generalize for collections
  */
 let addToDB = (post) => {
-  db.collection('pac-base').insertOne(post, function (err, r) {
+  db.collection('posts').insertOne(post, function (err, r) {
     if (err) {
       return err;
     }
     console.log(`inserted count: ${r.insertedCount}`);
   });
-  //console.log(db.collection('pac-base').find({}));
+  //console.log(db.collection('posts').find({}));
 };
 
 /* NOTE:
@@ -107,7 +107,7 @@ let addToDB = (post) => {
  */
 let editDB = (post, index) => {
     console.log(index);
-    db.collection('pac-base').findOne({index: index}, function (err, foundPost) {
+    db.collection('posts').findOne({index: index}, function (err, foundPost) {
         foundPost.date = post.date;
         foundPost.subjects = post.subjects;
         foundPost.title = post.title;
@@ -115,7 +115,7 @@ let editDB = (post, index) => {
         foundPost.author = post.author;
         foundPost.body = post.body;
         foundPost.labels = post.labels;
-        db.collection('socratic').save(foundPost);
+        db.collection('posts').save(foundPost);
         //TODO:DeprecationWarning: collection.save is deprecated. Use insertOne, insertMany, updateOne, or updateMany instead.
     });
 };
