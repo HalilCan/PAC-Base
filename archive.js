@@ -1,4 +1,4 @@
-const archivePath = __dirname + "/public/archive/arc.json";
+const archivePath = __dirname + "/public/archive/archive.json";
 const util = require("util");
 const fs = require("fs");
 const {stat} = require("fs").promises;
