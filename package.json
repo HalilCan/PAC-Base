@@ -1,6 +1,6 @@
 {
-  "name": "socratic-network",
-  "version": "0.2.7",
+  "name": "pac-base",
+  "version": "0.3.0",
   "description": "Social argument refinement",
   "main": "index.js",
   "engines": {
