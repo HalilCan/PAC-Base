@@ -34,6 +34,63 @@ let archiveSchema = new Schema(
 
 let ArchiveModel = mongoose.model('Post', archiveSchema);
 
+
+/* NOTE:
+    Downloads the online database and overwrites local cache.
+ */
+let syncDbDownward = (collection) => {
+    let currPost = {not: "undefined, man."};
+    let archiveCache = readArchiveSync();
+    for (let i = 0; currPost != undefined; i++) {
+        db.collection(collection).findOne({index: i}, function (err, foundPost) {
+            currPost = foundPost;
+            if (foundPost != undefined) {
+                currPost = {};
+                //TODO: Add a date condition to this.
+                currPost.date = foundPost.date;
+                currPost.subjects = foundPost.subjects;
+                currPost.title = foundPost.title;
+                currPost.subtitle = foundPost.subtitle;
+                currPost.author = foundPost.author;
+                currPost.body = foundPost.body;
+                currPost.labels = foundPost.labels;
+                currPost.index = i;
+                archiveCache.posts[i] = currPost;
+            }
+        });
+    }
+    saveArchive(archiveCache);
+};
+
+/*  NOTE:
+    Based on the cached json file, overwrites the Atlas DB. Do not be callous with this.
+ */
+let syncDbUpward = (collection) => {
+    let archive = readArchiveSync();
+    for (let post of archive.posts) {
+        db.collection(collection).findOne({index: post.index}, function (err, foundPost) {
+            if (foundPost != undefined) {
+                //TODO: Add a date condition to this.
+                foundPost.date = post.date;
+                foundPost.subjects = post.subjects;
+                foundPost.title = post.title;
+                foundPost.subtitle = post.subtitle;
+                foundPost.author = post.author;
+                foundPost.body = post.body;
+                foundPost.labels = post.labels;
+                db.collection('socratic').save(foundPost);
+                //TODO:DeprecationWarning: collection.save is deprecated. Use insertOne, insertMany, updateOne, or updateMany instead.
+            } else {
+                addToDB(post);
+            }
+        });
+    }
+};
+
+/* NOTE:
+    Given the connection to the database, inserts the ${post} to collection 'socratic'
+    TODO: Generalize for collections
+ */
 let addToDB = (post) => {
   db.collection('pac-base').insertOne(post, function (err, r) {
     if (err) {
@@ -44,28 +101,23 @@ let addToDB = (post) => {
   //console.log(db.collection('pac-base').find({}));
 };
 
+/* NOTE:
+    Given the connection to the database, finds the post that shares ${post}'s index, and overwrites its values based on the values of ${post}
+    TODO: Generalize for collections
+ */
 let editDB = (post, index) => {
-  console.log(index);
-  db.collection('pac-base').findOne({index: index}, function (err, foundPost) {
-    foundPost.date = post.date;
-    
-    foundPost.subjects = post.subjects;
-    
-    foundPost.title = post.title;
-    
-    foundPost.subtitle = post.subtitle;
-    
-    foundPost.author = post.author;
-    
-    foundPost.body = post.body;
-    
-    foundPost.labels = post.labels;
-    
-    db.collection('pac-base').save(foundPost);
-    //TODO:DeprecationWarning: collection.save is deprecated. Use insertOne, insertMany, updateOne, or updateMany instead.
-    //console.log(`inserted count: ${r.insertedCount}`);
-  });
-  console.log(db.collection('pac-base').find({index: index}));
+    console.log(index);
+    db.collection('pac-base').findOne({index: index}, function (err, foundPost) {
+        foundPost.date = post.date;
+        foundPost.subjects = post.subjects;
+        foundPost.title = post.title;
+        foundPost.subtitle = post.subtitle;
+        foundPost.author = post.author;
+        foundPost.body = post.body;
+        foundPost.labels = post.labels;
+        db.collection('socratic').save(foundPost);
+        //TODO:DeprecationWarning: collection.save is deprecated. Use insertOne, insertMany, updateOne, or updateMany instead.
+    });
 };
 ///
 
