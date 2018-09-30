@@ -1,5 +1,5 @@
-let socket = io('http://pac-base.herokuapp.com');
-//let socket = io('http://localhost:8000');
+//let socket = io('http://pac-base.herokuapp.com');
+let socket = io('http://localhost:8000');
 
 window.onload = () => {
   setUpSearchBar();
